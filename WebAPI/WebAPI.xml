@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:WebAPI.Controllers.AuctionHouseController.GetAllAuctionItems">
+            <summary>
+            A method that returns all information for all auction items.
+            </summary>
+            <returns>Returns a list of auction items</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.AuctionHouseController.GetAuctionItem(System.Int32)">
+            <summary>
+            Returns all information for one auction item, if the item does not exist, then returns null.
+            </summary>
+            <param name="itemNumber">The id of the auction item</param>
+            <returns>Returns one auction item, or null if the id does not exist</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.AuctionHouseController.ProvideBid(WebApplication.Models.Bid)">
+            <summary>
+            Provide a bid on an auction item
+            </summary>
+            <param name="bid">Bid object with info</param>
+            <returns>
+            Returns "Varen findes ikke" if the item does not exist.
+            Returns "Bud for lavt" if the bid is too low.
+            Returns "OK" if succesful
+            </returns>
+        </member>
+        <member name="M:WebAPI.Controllers.AuctionItemsController.GetAuctionItems">
+            <summary>
+            Returns all items
+            </summary>
+            <returns>All auction items from the database as JSON list</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.AuctionItemsController.GetAuctionItem(System.Int32)">
+            <summary>
+            Get a specific item
+            </summary>
+            <param name="id">The item number</param>
+            <returns>Returns status NotFound, if the item is null</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.AuctionItemsController.PutAuctionItem(System.Int32,WebApplication.Models.AuctionItem)">
+            <summary>
+            Updates an auction item in the database
+            </summary>
+            <param name="id">The item number of the item in the database</param>
+            <param name="auctionItem">The item with updated values to update the database with</param>
+            <returns>
+            Returns BadRequest if the id and object id does not match.
+            Returns NotFound if the id does not exists. 
+            Returns NoContent if succesful
+            </returns>
+        </member>
+        <member name="M:WebAPI.Controllers.AuctionItemsController.PostAuctionItem(WebApplication.Models.AuctionItem)">
+            <summary>
+            Save an auction item to the database
+            </summary>
+            <param name="auctionItem">Item to store in the database</param>
+            <returns>Returns 201 Created if succelful, and returns the item with the generated id</returns>
+        </member>
+        <member name="M:WebAPI.Controllers.AuctionItemsController.DeleteAuctionItem(System.Int32)">
+            <summary>
+            Delete an item in the database
+            </summary>
+            <param name="id">Item number of the item to delete.</param>
+            <returns>Returns NotFound status if the id does not exists. Returns the deleted item.</returns>
+        </member>
+    </members>
+</doc>

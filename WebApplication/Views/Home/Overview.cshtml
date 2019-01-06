@@ -1,0 +1,47 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model List<AuctionItem>
+
+@{ 
+	ViewData["Title"] = "Overview";
+}
+
+@section Scripts {
+
+}
+
+<div class="container">
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Number</th>
+				<th>Description</th>
+				<th>Rating Price</th>
+				<th>Bid Price</th>
+				<th>Bidder Name</th>
+				<th>Bidder Phonenumber</th>
+				<th>Bid Timestamp</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			@foreach(AuctionItem auctionItem in Model)
+			{
+				<tr>
+					<td>@auctionItem.ItemNumber</td>
+					<td>@auctionItem.ItemDescription</td>
+					<td>@auctionItem.RatingPrice</td>
+					<td>@auctionItem.BidPrice</td>
+					<td>@auctionItem.BidCustomName</td>
+					<td>@auctionItem.BidCustomPhone</td>
+					<td>@auctionItem.BidTimestamp</td>
+					@*<td><button class="btn btn-link" href="@Url.Action("ProvideBid", "Home", auctionItem.ItemNumber)">Provide bid</button></td>*@
+					<td><a class="btn btn-link" asp-controller="Home" asp-action="BidDetails" asp-route-id="@auctionItem.ItemNumber">Provide bid</a></td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+</div>

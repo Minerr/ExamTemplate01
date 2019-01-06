@@ -1,0 +1,73 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model WebApplication.Models.AuctionItem
+
+@{
+	ViewData["Title"] = "Provide bid";
+}
+
+<div class="container">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Number</th>
+				<th>Description</th>
+				<th>Rating Price</th>
+				<th>Bid Price</th>
+				<th>Bidder Name</th>
+				<th>Bidder Phonenumber</th>
+				<th>Bid Timestamp</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>@Model.ItemNumber</td>
+				<td>@Model.ItemDescription</td>
+				<td>@Model.RatingPrice</td>
+				<td>@Model.BidPrice</td>
+				<td>@Model.BidCustomName</td>
+				<td>@Model.BidCustomPhone</td>
+				<td>@Model.BidTimestamp</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<form asp-controller="Home" asp-action="BidDetails" method="post">
+		<div class="card-body">
+			<h3 class="card-title">Bid on item</h3>
+			<br />
+			<div asp-validation-summary="All" class="text-danger"></div>
+			<div class="row form-group">
+				<label class="col col-2" asp-for="ItemNumber"></label>
+				<input class="col col-4 form-control" type="hidden" asp-for="ItemNumber" />
+			</div>
+			<div class="row form-group">
+				<label class="col col-2" asp-for="ItemDescription"></label>
+				<input class="col col-4 form-control" type="hidden" asp-for="ItemDescription" />
+			</div>
+			<div class="row form-group">
+				<label class="col col-2" asp-for="BidTimestamp"></label>
+				<input class="col col-4 form-control" type="hidden" asp-for="BidTimestamp" />
+			</div>
+			<div class="row form-group">
+				<label class="col col-2" asp-for="RatingPrice"></label>
+				<input class="col col-4 form-control" type="hidden" asp-for="RatingPrice" />
+			</div>
+			<div class="row form-group">
+				<label class="col col-2" asp-for="BidCustomName"></label>
+				<input class="col col-4 form-control" type="text" asp-for="BidCustomName" />
+			</div>
+			<div class="row form-group">
+				<label class="col col-2" asp-for="BidCustomPhone"></label>
+				<input class="col col-4 form-control" type="text" asp-for="BidCustomPhone" />
+			</div>
+			<div class="row form-group">
+				<label class="col col-2" asp-for="BidPrice"></label>
+				<input class="col col-4 form-control" type="number" asp-for="BidPrice" />
+			</div>
+			<button type="submit" class="btn btn-primary">Add bid</button>
+		</div>
+	</form>
+</div>
+
+
